@@ -1,0 +1,163 @@
+<!--富强民主点击特效-->
+<canvas class="fireworks" style="position: fixed; left: 0px; top: 0px; z-index: 1; pointer-events: none; width: 1440px; height: 451px;" width="2880" height="902"></canvas>
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+<script type="text/javascript">
+"use strict";function updateCoords(e){pointerX=(e.clientX||e.touches[0].clientX)-canvasEl.getBoundingClientRect().left,pointerY=e.clientY||e.touches[0].clientY-canvasEl.getBoundingClientRect().top}function setParticuleDirection(e){var t=anime.random(0,360)*Math.PI/180,a=anime.random(50,180),n=[-1,1][anime.random(0,1)]*a;return{x:e.x+n*Math.cos(t),y:e.y+n*Math.sin(t)}}function createParticule(e,t){var a={};return a.x=e,a.y=t,a.color=colors[anime.random(0,colors.length-1)],a.radius=anime.random(16,32),a.endPos=setParticuleDirection(a),a.draw=function(){ctx.beginPath(),ctx.arc(a.x,a.y,a.radius,0,2*Math.PI,!0),ctx.fillStyle=a.color,ctx.fill()},a}function createCircle(e,t){var a={};return a.x=e,a.y=t,a.color="#F00",a.radius=0.1,a.alpha=0.5,a.lineWidth=6,a.draw=function(){ctx.globalAlpha=a.alpha,ctx.beginPath(),ctx.arc(a.x,a.y,a.radius,0,2*Math.PI,!0),ctx.lineWidth=a.lineWidth,ctx.strokeStyle=a.color,ctx.stroke(),ctx.globalAlpha=1},a}function renderParticule(e){for(var t=0;t<e.animatables.length;t++){e.animatables[t].target.draw()}}function animateParticules(e,t){for(var a=createCircle(e,t),n=[],i=0;i<numberOfParticules;i++){n.push(createParticule(e,t))}anime.timeline().add({targets:n,x:function(e){return e.endPos.x},y:function(e){return e.endPos.y},radius:0.1,duration:anime.random(1200,1800),easing:"easeOutExpo",update:renderParticule}).add({targets:a,radius:anime.random(80,160),lineWidth:0,alpha:{value:0,easing:"linear",duration:anime.random(600,800)},duration:anime.random(1200,1800),easing:"easeOutExpo",update:renderParticule,offset:0})}function debounce(e,t){var a;return function(){var n=this,i=arguments;clearTimeout(a),a=setTimeout(function(){e.apply(n,i)},t)}}var canvasEl=document.querySelector(".fireworks");if(canvasEl){var ctx=canvasEl.getContext("2d"),numberOfParticules=30,pointerX=0,pointerY=0,tap="mousedown",colors=["#FF1461","#18FF92","#5A87FF","#FBF38C"],setCanvasSize=debounce(function(){canvasEl.width=2*window.innerWidth,canvasEl.height=2*window.innerHeight,canvasEl.style.width=window.innerWidth+"px",canvasEl.style.height=window.innerHeight+"px",canvasEl.getContext("2d").scale(2,2)},500),render=anime({duration:1/0,update:function(){ctx.clearRect(0,0,canvasEl.width,canvasEl.height)}});document.addEventListener(tap,function(e){"sidebar"!==e.target.id&&"toggle-sidebar"!==e.target.id&&"A"!==e.target.nodeName&&"IMG"!==e.target.nodeName&&(render.play(),updateCoords(e),animateParticules(pointerX,pointerY))},!1),setCanvasSize(),window.addEventListener("resize",setCanvasSize,!1)}"use strict";function updateCoords(e){pointerX=(e.clientX||e.touches[0].clientX)-canvasEl.getBoundingClientRect().left,pointerY=e.clientY||e.touches[0].clientY-canvasEl.getBoundingClientRect().top}function setParticuleDirection(e){var t=anime.random(0,360)*Math.PI/180,a=anime.random(50,180),n=[-1,1][anime.random(0,1)]*a;return{x:e.x+n*Math.cos(t),y:e.y+n*Math.sin(t)}}function createParticule(e,t){var a={};return a.x=e,a.y=t,a.color=colors[anime.random(0,colors.length-1)],a.radius=anime.random(16,32),a.endPos=setParticuleDirection(a),a.draw=function(){ctx.beginPath(),ctx.arc(a.x,a.y,a.radius,0,2*Math.PI,!0),ctx.fillStyle=a.color,ctx.fill()},a}function createCircle(e,t){var a={};return a.x=e,a.y=t,a.color="#F00",a.radius=0.1,a.alpha=0.5,a.lineWidth=6,a.draw=function(){ctx.globalAlpha=a.alpha,ctx.beginPath(),ctx.arc(a.x,a.y,a.radius,0,2*Math.PI,!0),ctx.lineWidth=a.lineWidth,ctx.strokeStyle=a.color,ctx.stroke(),ctx.globalAlpha=1},a}function renderParticule(e){for(var t=0;t<e.animatables.length;t++){e.animatables[t].target.draw()}}function animateParticules(e,t){for(var a=createCircle(e,t),n=[],i=0;i<numberOfParticules;i++){n.push(createParticule(e,t))}anime.timeline().add({targets:n,x:function(e){return e.endPos.x},y:function(e){return e.endPos.y},radius:0.1,duration:anime.random(1200,1800),easing:"easeOutExpo",update:renderParticule}).add({targets:a,radius:anime.random(80,160),lineWidth:0,alpha:{value:0,easing:"linear",duration:anime.random(600,800)},duration:anime.random(1200,1800),easing:"easeOutExpo",update:renderParticule,offset:0})}function debounce(e,t){var a;return function(){var n=this,i=arguments;clearTimeout(a),a=setTimeout(function(){e.apply(n,i)},t)}}var canvasEl=document.querySelector(".fireworks");if(canvasEl){var ctx=canvasEl.getContext("2d"),numberOfParticules=30,pointerX=0,pointerY=0,tap="mousedown",colors=["#FF1461","#18FF92","#5A87FF","#FBF38C"],setCanvasSize=debounce(function(){canvasEl.width=2*window.innerWidth,canvasEl.height=2*window.innerHeight,canvasEl.style.width=window.innerWidth+"px",canvasEl.style.height=window.innerHeight+"px",canvasEl.getContext("2d").scale(2,2)},500),render=anime({duration:1/0,update:function(){ctx.clearRect(0,0,canvasEl.width,canvasEl.height)}});document.addEventListener(tap,function(e){"sidebar"!==e.target.id&&"toggle-sidebar"!==e.target.id&&"A"!==e.target.nodeName&&"IMG"!==e.target.nodeName&&(render.play(),updateCoords(e),animateParticules(pointerX,pointerY))},!1),setCanvasSize(),window.addEventListener("resize",setCanvasSize,!1)};
+</script>
+<!------------------------------------------------------>
+<!---鼠标点击文字特效-->
+<script type="text/javascript"> 
+/*
+    /* 鼠标特效 */ 
+    var a_idx = 0; 
+    var b_idx = 0; 
+    /*   文字和颜色数组 */
+    var a = new Array("NOI rp++", "TG rp++", "PJ rp++", "RP++" ); 
+    var b = new Array("#FF0000","#FF7F00"," #FFFF00","#00FF00","#00FFFF","#0000FF","#8B00FF","#FF0000","#FF7F00"," #FFFF00","#00FF00","#00FFFF","#0000FF","#8B00FF");
+    jQuery(document).ready(function($) { 
+        $("body").click(function(e) { 
+           
+            var $i = $("<span/>").text(a[a_idx]); 
+              a_idx=parseInt(4*Math.random()); //文字随机数
+              b_idx=parseInt(14*Math.random()); //颜色随机数
+            var x = e.pageX, 
+            y = e.pageY; 
+            $i.css({ 
+                "z-index": 999, 
+                "font-size":"0.9em",            //字体大小
+                "top": y - 20, 
+                "left": x, 
+                "position": "absolute", 
+                "font-weight": "bold", 
+                "color": b[b_idx] 
+            }); 
+            $("body").append($i); 
+            $i.animate({ 
+                "top": y - 180, 
+                "opacity": 0 
+            }, 
+            1500, 
+            function() { 
+                $i.remove(); 
+            }); 
+        }); 
+    }); 
+*/
+    </script>
+    <!--富强民主点击特效-->
+    
+    
+    <script type="text/x-mathjax-config">
+       MathJax.Hub.Config({
+           tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']],processEscapes: true},
+           TeX: {equationNumbers: {autoNumber: ["AMS"],useLabelIds: true}},
+           "HTML-CSS": {linebreaks: {automatic: true},scale: 85},
+           SVG: {linebreaks: {automatic: true}}
+       });
+    </script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+    <script>  
+    // 浏览器标题切换  
+    var OriginTitile = 'Trotyl°の小窝';    // 保存之前页面标题  
+    var titleTime;  
+    document.addEventListener('visibilitychange', function(){  
+        if (document.hidden){  
+            document.title ='泥不要我了吗？QAQ';  
+            clearTimeout(titleTime);  
+        }else{  
+            document.title = '我就知道泥会回来哒~';  
+            titleTime = setTimeout(function() {  
+                document.title = OriginTitile;  
+            }, 1000); // 2秒后恢复原标题  
+        }  
+    });  
+
+    </script>
+    <center>
+        <br><h2>友链</h2>
+    </center>
+        <center>
+        Orz【<a target="_blank" href="https://www.cnblogs.com/-TNT-"><font color="Gray">Trotyl°</font></a>】stO<br>
+
+        stO【<a target="_blank" href="https://www.cnblogs.com/lbn233"><font color="Black">B</font><font color="Red">aylor</font></a>】Orz<br>
+
+       stO 【<a target="_blank" href="https://www.cnblogs.com/lmpp-pre/"><font color="Black">l</font><font color="Red">mpp</font></a>】Orz<br>
+
+        stO【<a target="_blank" href="https://www.cnblogs.com/shu-chong/"><font color="Black">一</font><font color="Red">只书虫仔</font></a>】Orz<br><br>
+        </center>
+    <center>
+    <style>.prettyprint.linenums ol,pre.prettyprint.linenums ol { margin: 0 0 0 10px; font-family: Lucida Handwriting, sans-serif }
+    .prettyprint.linenums ol li,pre.prettyprint.linenums ol li { padding-left: 5px; color: #8a8a97; line-height: 20px; margin-left: 0; list-style: decimal; font-family: Lucida Handwriting, sans-serif }
+    .prettyprint ol.linenums { margin-bottom: 0; background-color: #272822; padding: 8px }
+    .prettyprint .com { color: #93a1a1; background-color: #272822 }
+    .prettyprint .lit { color: #AE81FF; background-color: #272822 }
+    .prettyprint .pun,.prettyprint .opn,.prettyprint .clo { color: #F8F8F2; background-color: #272822 }
+    .prettyprint .fun { color: #dc322f; background-color: #272822 }
+    .prettyprint .str,.prettyprint .atv { color: #E6DB74; background-color: #272822 }
+    .prettyprint .kwd,.prettyprint .tag { color: #F92659; background-color: #272822 }
+    .prettyprint .typ,.prettyprint .atn,.prettyprint .dec,.prettyprint .var { color: #A6E22E; background-color: #272822 }
+    .prettyprint .pln { color: #66D9EF; background-color: #272822 }</style>
+        
+   
+    
+    <div class="Snow">
+        
+    </div>
+    
+    <div class="dashboard">
+        <a href="https://i.cnblogs.com/EditPosts.aspx?opt=1" title="新随笔"><i aria-hidden="true" class="fa fa-book fa-fw"></i></a>
+        <a href="https://msg.cnblogs.com/send?recipient=Trotyl%C2%B0" title="联系"><i aria-hidden="true" class="fa fa-comment fa-fw"></i></a>
+        <a href="https://www.cnblogs.com/-TNT-/rss" title="订阅"><i aria-hidden="true" class="fa fa-rss fa-fw"></i></a>
+        <a href="https://i.cnblogs.com/" title="管理"><i aria-hidden="true" class="fa fa-cog fa-fw"></i></a>
+    </div>
+    <style type="text/css">
+    .dashboard{
+        background: #fff;
+        z-index: 1;
+        position: relative;
+        overflow: hidden;
+        margin: 20px;
+    }
+    .dashboard a{
+        color: #5a5f69;
+        float: left;
+        width: calc(25% - 4px);
+        height: 51px;
+        display: block;
+        font-size: 26px;
+        line-height: 51px;
+        text-align: center;
+        border-radius: 100%;
+        margin: 2px;
+    }
+    </style>
+    
+    
+    <div class="Snow">
+        <canvas id="Snow"></canvas>
+    </div>
+    <script src="https://files.cnblogs.com/files/cn-suqingnian/snow.js"></script>
+    
+    
+    
+    <script>(function(T,h,i,n,k,P,a,g,e){g=function(){P=h.createElement(i);a=h.getElementsByTagName(i)[0];P.src=k;P.charset="utf-8";P.async=1;a.parentNode.insertBefore(P,a)};T["ThinkPageWeatherWidgetObject"]=n;T[n]||(T[n]=function(){(T[n].q=T[n].q||[]).push(arguments)});T[n].l=+new Date();if(T.attachEvent){T.attachEvent("onload",g)}else{T.addEventListener("load",g,false)}}(window,document,"script","tpwidget","//widget.seniverse.com/widget/chameleon.js"))</script>
+    <script>tpwidget("init", {
+        "flavor": "bubble",
+        "location": "WX4FBXXFKE4F",
+        "geolocation": "enabled",
+        "position": "top-right",
+        "margin": "10px 10px",
+        "language": "auto",
+        "unit": "c",
+        "theme": "chameleon",
+        "uid": "U5D5CC1738",
+        "hash": "f43412924b62fd1afecf416c1bd8837e"
+    });
+    tpwidget("show");</script><html xmlns="http://www.w3.org/1999/xhtml">
+<!---时钟--->
+<div id="clockdiv">
+    <canvas id="dom" width="200" height="200">您的浏览器不兼容canvas</canvas>
+</div>
+<script type="text/javascript" src="https://blog-static.cnblogs.com/files/zouwangblog/Clock.js"></script>
