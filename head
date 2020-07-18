@@ -1,0 +1,33 @@
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<script type="text/javascript" language="javascript">
+　　//Setting ico for cnblogs
+　　var linkObject = document.createElement('link');
+　　linkObject.rel = "shortcut icon";
+　　linkObject.href = "https://files.cnblogs.com/files/-TNT-/qwq.ico";
+　　document.getElementsByTagName("head")[0].appendChild(linkObject);
+</script>
+<!-----打赏----->
+<script>
+window.tctipConfig = {
+        imagePrefix: "http://files.cnblogs.com/files/kdy11",
+        cssPrefix:     "http://files.cnblogs.com/files/kdy11",
+        buttonImageId:  4,
+        buttonTip:  "dashang",
+        list:{
+            alipay: {qrimg: "https://images.cnblogs.com/cnblogs_com/-TNT-/1794554/o_200627091930%E6%9A%82%E4%B8%8D%E6%94%AF%E6%8C%81.PNG"},
+            weixin:{qrimg: "https://images.cnblogs.com/cnblogs_com/-TNT-/1794554/o_200627091930%E6%9A%82%E4%B8%8D%E6%94%AF%E6%8C%81.PNG"},//https://images.cnblogs.com/cnblogs_com/-TNT-/1794785/o_200628012033%E6%8D%95%E8%8E%B7.PNG
+        }
+};
+
+</script>
+<script src="https://blog-static.cnblogs.com/files/zouwangblog/dashang.js"></script>
+<!---加载条--->
+<link rel="stylesheet" href="https://blog-static.cnblogs.com/files/zouwangblog/nprogress.css">
+<script src="https://blog-static.cnblogs.com/files/zouwangblog/nprogress.js"></script>
+<script>
+ $(document).ready(function(){
+NProgress.start();
+NProgress.done();
+});
+</script>
